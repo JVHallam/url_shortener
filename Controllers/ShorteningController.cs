@@ -20,7 +20,16 @@ namespace url_shortener.Controllers
         public async Task<IActionResult> Shorten(string url)
         {
             string shorteningKey = await _shorteningService.Shorten(url);
-            var result = new OkObjectResult(shorteningKey);
+
+            //TODO: Move to a middleware
+            if (!Uri.IsWellFormedUriString(url, UriKind.Absolute)){
+                throw new Exception($"{url} is a malformed url");
+            }
+
+            //TODO: This needs to have the controller name hardcoding removed and i want the absolute url
+            string path = $"/Shortening/Lengthen/{shorteningKey}";
+
+            var result = new OkObjectResult(path);
             return result;
         }
 

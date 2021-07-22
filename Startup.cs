@@ -53,7 +53,7 @@ namespace url_shortener
         public static void InitDatabase(string connectionString){
             using var connection = new SqlConnection(connectionString);
 
-            //Move this chunky SQL to it's own file
+            //Move this chunky SQL to it's own file. Inlining SQL can get messy
             var sql = @"
                 IF NOT EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'URLS')
                 BEGIN

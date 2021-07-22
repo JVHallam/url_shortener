@@ -1,27 +1,7 @@
-# Getting a deployable POC
-* CLEAN THE REPO! ( Done )
-    * Setup script has my fucking connection string in it, not cool
-    * Create an export_secrets.sh
-    * Add this to the .gitignore
-    * This is then called from run.sh
-
-* Database Checks + Initialization:
-    * In configure, check the environment variables
-    * In configure, Check if i can connect to the database, stated in the string
-    * In configure, initiliase the database if not already exists
-
-* Setup script:
-    * Update the README to detail this
-    * Remove my value
-
-* Test it all works:
-    * Delete the project
-    * Repull it
-    * How hard is it to setup from scratch
-        * Write a README.md
+# Validation:
+* Add a validation middleware that checks for valid http strings
 
 # Test + Refactor
-* A validation middleware, please :'(
 * Get an E2E project setup
 * Get some basic E2E tests
     * Happy path
@@ -39,7 +19,15 @@
 
 # Clean up and finish
 * Add a front end
-* This should be super simple, nothing else
+    * 1 page
+    * Bootstraps via the CDN
+    * An input
+    * calls the endpoint on submit via fetch
+    * puts the response into an output window
+    * That's it
+
+# Submit
+* Email the guys in the morning
 
 ----------------------------------------------------------------------
 # Complete
@@ -103,3 +91,24 @@
 * Possibly consider finishing this in the morning
 * Reject previous conclusion
 
+# Getting a deployable POC
+* CLEAN THE REPO! ( Done )
+    * Setup script has my fucking connection string in it, not cool
+    * Create an export_secrets.sh
+    * Add this to the .gitignore
+    * This is then called from run.sh
+
+* Database Checks + Initialization:
+    * In configure, check the environment variables
+    * In configure, Check if i can connect to the database, stated in the string
+    * In configure, initiliase the database if not already exists
+
+* Setup script:
+    * Update the README to detail this
+    * Remove my value
+
+* Test it all works:
+    * Delete the project
+    * Repull it
+    * How hard is it to setup from scratch
+        * Write a README.md
