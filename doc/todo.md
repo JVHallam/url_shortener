@@ -1,4 +1,3 @@
-
 # Break one:
 * Eat dinner
 * Shower
@@ -6,6 +5,12 @@
 * Reject previous conclusion
 
 # Getting a deployable POC
+* CLEAN THE REPO!
+    * Setup script has my fucking connection string in it, not cool
+    * Create an export_secrets.sh
+    * Add this to the .gitignore
+    * This is then called from run.sh
+
 * Database Checks + Initialization:
     * In configure, check the environment variables
     * In configure, Check if i can connect to the database, stated in the string
@@ -39,6 +44,8 @@
     * Check any names ( Capitals for class methods, lower case of variables );
 
 # Clean up and finish
+* Add a front end
+* This should be super simple, nothing else
 
 ----------------------------------------------------------------------
 # Complete
