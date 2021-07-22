@@ -2,6 +2,4 @@
 
 . ./export_secrets.sh
 
-echo $connectionString
-
-# dotnet watch run;
+dotnet watch run;

@@ -1,11 +1,5 @@
-# Break one:
-* Eat dinner
-* Shower
-* Possibly consider finishing this in the morning
-* Reject previous conclusion
-
 # Getting a deployable POC
-* CLEAN THE REPO!
+* CLEAN THE REPO! ( Done )
     * Setup script has my fucking connection string in it, not cool
     * Create an export_secrets.sh
     * Add this to the .gitignore
@@ -102,3 +96,10 @@
     * The key is returned
     * Can get the key from the service
     * Can use that key to go to the service
+
+# Break one:
+* Eat dinner
+* Shower
+* Possibly consider finishing this in the morning
+* Reject previous conclusion
+
