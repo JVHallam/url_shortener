@@ -1,12 +1,14 @@
 using System;
 using System.Threading.Tasks;
 using url_shortener.Interfaces;
-
 using System.IO;
 using Dapper;
 using System.Data.SqlClient;
+using System.Dynamic;
 
 namespace url_shortener.Repositories{
+
+    //Should integrate this
     public class UrlModel{
         public string Url;
         public string Key;
@@ -20,24 +22,34 @@ namespace url_shortener.Repositories{
              _connectionString = Environment.GetEnvironmentVariable("connectionString");
         }
 
-        public async Task<bool> SaveAsync(string key, string url){
-            return true;
+        public async Task<int> SaveAsync(string url){
+            using var connection = new SqlConnection(_connectionString);
+
+            var sql = "INSERT INTO URLS OUTPUT INSERTED.ID_column VALUES (@url);";
+
+            var sqlParams = new { url };
+
+            try{ 
+                var returned = connection.QuerySingle(sql, sqlParams);
+                return returned.ID_column;
+            }
+            catch(Exception ex){
+                return 420;
+            }
         }
 
         public async Task<string> FetchAsync(string key){
-            //Get something from the dapper database
-
             using var connection = new SqlConnection(_connectionString);
 
-            var sql = "SELECT TOP 1 * FROM jake_test2";
+            var sql = "SELECT TOP 1 * FROM URLS WHERE ID_column=@key";
+            var sqlParams = new { key };
 
             try{
-                var returned = await connection.QuerySingleOrDefaultAsync(sql);
-                return returned.keyHash;
+                var returned = await connection.QuerySingleOrDefaultAsync(sql, sqlParams);
+                return returned.url;
             }
             catch(Exception ex){
-                Console.WriteLine(ex.Message);
-                return "Woops";
+                return "https://www.google.com/Woops";
             }
         }
     }

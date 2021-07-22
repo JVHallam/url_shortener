@@ -24,6 +24,10 @@
     * Make the url a unique value
     * make the key, the primary key of the table, lol, why not?
 
+* Clean up:
+    * Rename the table + fields
+    * Set unique values for the urls?
+
 * Happy path:
     * Can save a key to the database
     * The key is returned
@@ -45,6 +49,7 @@
     * Write a README.md
 
 # Test + Refactor
+* A validation middleware, please :'(
 * Get an E2E project setup
 * Get some basic E2E tests
     * Happy path

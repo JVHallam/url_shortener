@@ -16,7 +16,7 @@ namespace url_shortener.Controllers
         }
 
         [HttpGet]
-        [Route("Shorten/{url}")]
+        [Route("Shorten")]
         public async Task<IActionResult> Shorten(string url)
         {
             string shorteningKey = await _shorteningService.Shorten(url);

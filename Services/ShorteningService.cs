@@ -13,14 +13,13 @@ namespace url_shortener.Services{
         }
 
         public async Task<string> Shorten(string url){
-            var key = "GENKEY";
-            bool repoResult = await _shorteningRepository.SaveAsync(key, url);
-            return $"Hello from the shortening Service. repoResult - {repoResult}, key - {key}, url - {url}";
+            int repoResult = await _shorteningRepository.SaveAsync(url);
+            return $"{repoResult}";
         }
 
         public async Task<string> Lengthen(string key){
             var repoResult = await _shorteningRepository.FetchAsync(key);
-            return $"https://postman-echo.com/get?repoResult={repoResult}&key={key}";
+            return repoResult;
         }
     }
 }
