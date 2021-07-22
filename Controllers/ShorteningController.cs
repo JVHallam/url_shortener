@@ -15,6 +15,17 @@ namespace url_shortener.Controllers
             _shorteningService = shorteningService;
         }
 
+        public string constructLengthenUrl(string key){
+
+            var request = this.HttpContext.Request;
+            var hostPath = $"{Request.Host}";
+            var protocol = request.IsHttps ? "https" : "http";
+            var controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+            string path = $"{protocol}://{hostPath}/{controllerName}/Lengthen/{key}";
+
+            return path;
+        }
+
         [HttpGet]
         [Route("Shorten")]
         public async Task<IActionResult> Shorten(string url)
@@ -26,8 +37,7 @@ namespace url_shortener.Controllers
                 throw new Exception($"{url} is a malformed url");
             }
 
-            //TODO: This needs to have the controller name hardcoding removed and i want the absolute url
-            string path = $"/Shortening/Lengthen/{shorteningKey}";
+            var path = constructLengthenUrl(shorteningKey);
 
             var result = new OkObjectResult(path);
             return result;

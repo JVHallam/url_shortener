@@ -1,6 +1,9 @@
 # Validation:
 * Add a validation middleware that checks for valid http strings
 
+# Front end:
+* Get the one page working
+
 # Test + Refactor
 * Get an E2E project setup
 * Get some basic E2E tests
@@ -16,15 +19,6 @@
 * Appearances:
     * Get the { almond } braces on the go.
     * Check any names ( Capitals for class methods, lower case of variables );
-
-# Clean up and finish
-* Add a front end
-    * 1 page
-    * Bootstraps via the CDN
-    * An input
-    * calls the endpoint on submit via fetch
-    * puts the response into an output window
-    * That's it
 
 # Submit
 * Email the guys in the morning
