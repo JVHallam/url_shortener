@@ -16,16 +16,25 @@
     </body>
     <footer>
         <script>
-            const urlElement = document.getElementById("url");
-            const submitElement = document.getElementById("submit");
-            const displayElement = document.getElementById("display");
 
-            submitElement.addEventListener("click", function(event){
+            function updateDisplay(message){
+                const displayElement = document.getElementById("display");
+                displayElement.innerText = message; 
+            }
+
+            function getShortenedUrl( event ){
+                const urlElement = document.getElementById("url");
+
                 event.preventDefault();
                 console.log(urlElement.value);
-                displayElement.innerText = urlElement.value;
-                var prom = fetch("/shortening/shorten?url=https://www.google.com");
-            });
+                const str = urlElement.value;
+
+                var prom = fetch(`/shortening/shorten?url=${str}`);
+                prom.then( x => x.text() ).then( updateDisplay );
+            }
+
+            const submitElement = document.getElementById("submit");
+            submitElement.addEventListener("click", getShortenedUrl );
         </script>
     </footer>
 </html>
