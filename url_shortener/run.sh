@@ -1,5 +1,6 @@
 #!/bin/bash
 
-. ./export_secrets.sh
+# Input your full SQL connection string here
+export connectionString=""
 
 dotnet watch run;

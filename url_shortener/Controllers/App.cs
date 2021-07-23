@@ -10,7 +10,7 @@ using System.IO;
 namespace url_shortener.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("")]
     public class ApplicationController : ControllerBase
     {
         private IWebHostEnvironment _hostingEnvironment;
