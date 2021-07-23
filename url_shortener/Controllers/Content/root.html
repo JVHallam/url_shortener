@@ -19,7 +19,14 @@
 
             function updateDisplay(message){
                 const displayElement = document.getElementById("display");
-                displayElement.innerText = message; 
+                var text = `Your Shortened Url : ${message}`;
+                displayElement.innerText = text; 
+            }
+
+            function updateDisplayError(message){
+                const displayElement = document.getElementById("display");
+                var text = `Your URL is malformed. Please try again.`;
+                displayElement.innerText = text; 
             }
 
             function getShortenedUrl( event ){
@@ -30,7 +37,16 @@
                 const str = urlElement.value;
 
                 var prom = fetch(`/shortening/shorten?url=${str}`);
-                prom.then( x => x.text() ).then( updateDisplay );
+                prom
+                    .then( response => {
+                        if(response.ok){
+                            return response.text();
+                        }
+                        else{
+                            throw new Error();
+                        }
+                    })
+                    .then( updateDisplay, updateDisplayError );
             }
 
             const submitElement = document.getElementById("submit");
