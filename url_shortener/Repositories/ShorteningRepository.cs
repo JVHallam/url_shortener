@@ -49,7 +49,7 @@ namespace url_shortener.Repositories{
                 return returned.url;
             }
             catch(Exception ex){
-                return "https://www.google.com/Woops";
+                return "";
             }
         }
     }

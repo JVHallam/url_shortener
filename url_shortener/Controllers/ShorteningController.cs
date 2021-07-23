@@ -51,8 +51,12 @@ namespace url_shortener.Controllers
         public async Task<IActionResult> Lengthen(string key)
         {
             string url = await _shorteningService.Lengthen(key);
-            var result = new RedirectResult(url);
-            return result;
+
+            if(String.IsNullOrEmpty(url)){
+                return new BadRequestResult();
+            }
+
+            return new RedirectResult(url);
         }
     }
 }

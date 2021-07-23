@@ -1,16 +1,3 @@
-
-# Test + Refactor
-* Get an E2E project setup
-* Get some basic E2E tests
-    * Happy path
-    * Bad url
-    * Bad Key
-    * Bad everything
-
-* Urls + Controllers:
-    * Do the URLS and controllers make sense?
-    * Should i have a shorten / lengthen controller, made seperate
-
 * Appearances:
     * Get the { almond } braces on the go.
     * Check any names ( Capitals for class methods, lower case of variables );

@@ -44,7 +44,6 @@ namespace url_shortener_xunit_tests
         [Fact]
         public async Task ShorteningLengthen_RetrieveValidKey_Success()
         {
-            Console.WriteLine("TEST!");
             using (var client = new HttpClient())
             {
 
@@ -54,7 +53,6 @@ namespace url_shortener_xunit_tests
                 Assert.Equal( (int)response.StatusCode, (int)HttpStatusCode.OK );
 
                 //Call the response
-                Console.WriteLine( responseString );
                 var redirectResponse = await _client.GetAsync( responseString );
                 
                 //Assert that it's a redirect
@@ -62,8 +60,41 @@ namespace url_shortener_xunit_tests
 
                 //Assert the redirect url header
                 string relocationUrl = redirectResponse.Headers.Location.ToString();
-                Console.WriteLine( relocationUrl );
                 Assert.Equal( new Uri(expectedUrl), new Uri(relocationUrl) );
+            }
+        }
+
+        //Test trying to store a bad url
+        [Fact]
+        public async Task ShorteningShorten_InvalidUri_BadResponse()
+        {
+            using (var client = new HttpClient())
+            {
+
+                var expectedUrl = "INVALID";
+                var response = await _client.GetAsync($"{_controllerName}/shorten?url={expectedUrl}");
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                Assert.Contains("malformed", responseString);
+
+                Assert.Equal( (int)response.StatusCode, (int)HttpStatusCode.InternalServerError );
+            }
+        }
+
+        //Test fetching something that doesn't exist
+        [Fact]
+        public async Task ShorteningLengthen_InvalidKey_BadResponse()
+        {
+            Console.WriteLine("TEST!");
+            using (var client = new HttpClient())
+            {
+                var response = await _client.GetAsync($"{_controllerName}/lengthen/invalid");
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                //I want a bad request, 400
+                Assert.Equal( (int)response.StatusCode, (int)HttpStatusCode.BadRequest );
+
+                Console.WriteLine( responseString );
             }
         }
     }
