@@ -7,13 +7,6 @@ using System.Data.SqlClient;
 using System.Dynamic;
 
 namespace url_shortener.Repositories{
-
-    //Should integrate this
-    public class UrlModel{
-        public string Url;
-        public string Key;
-    }
-
     public class ShorteningRepository : IShorteningRepository
     {
         private readonly string _connectionString;
