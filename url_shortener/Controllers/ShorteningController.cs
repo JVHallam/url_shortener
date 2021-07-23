@@ -16,7 +16,6 @@ namespace url_shortener.Controllers
         }
 
         public string constructLengthenUrl(string key){
-
             var request = this.HttpContext.Request;
             var hostPath = $"{Request.Host}";
             var protocol = request.IsHttps ? "https" : "http";
@@ -26,16 +25,19 @@ namespace url_shortener.Controllers
             return path;
         }
 
+        public void ValidateUrl(string url){
+            if (!Uri.IsWellFormedUriString(url, UriKind.Absolute)){
+                throw new Exception($"{url} is a malformed url");
+            }
+        }
+
         [HttpGet]
         [Route("Shorten")]
         public async Task<IActionResult> Shorten(string url)
         {
-            string shorteningKey = await _shorteningService.Shorten(url);
+            ValidateUrl( url );
 
-            //TODO: Move to a middleware
-            if (!Uri.IsWellFormedUriString(url, UriKind.Absolute)){
-                throw new Exception($"{url} is a malformed url");
-            }
+            string shorteningKey = await _shorteningService.Shorten(url);
 
             var path = constructLengthenUrl(shorteningKey);
 

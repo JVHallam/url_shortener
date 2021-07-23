@@ -1,8 +1,3 @@
-# Validation:
-* Add a validation middleware that checks for valid http strings
-
-# Front end:
-* Get the one page working
 
 # Test + Refactor
 * Get an E2E project setup
@@ -19,6 +14,15 @@
 * Appearances:
     * Get the { almond } braces on the go.
     * Check any names ( Capitals for class methods, lower case of variables );
+
+# Validation:
+* Add a validation middleware that checks for valid http strings
+
+# Front end:
+* Get the one page working
+    * Enable static content, at the root of the website
+    * Deploy it
+    * Get the frontend actually working
 
 # Submit
 * Email the guys in the morning
